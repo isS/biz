@@ -16,44 +16,143 @@
 
 1. 语法标签: 开始```{` `}```
 
-2. 编写模板
+2. 变量输出
+
+	* json数据:
+
+	```
+	{'name':"商用码标题"}
+	```
+
+	* 方法:
+
+	```
+	{`name`}
+	```
+
+	* 结果:
+
+	```
+	商用码
+	```
+
+
+
+3. 编写模板
    使用```<public id="module_title"></public>```模板标签存放模板：
+   当调用public标签模板时,必须添加***public-***
+    
+	*    数据
+	
+	```
+	{
+	"tree_list":[                                                                      
+	{
+	"module":"rich_text",                                                                   
+	"soncode_link":"//biz.cli.im/site/m/FJ3548",        
+	"item":{                                            
+	"title":"网上含APP订餐满就送",                      
+	"content":"<p> 肯德基宅急送实行专属菜单及价格。为保证食物品质，肯德基宅急送有送餐范围和服务时间限制。不同城市、不同送餐范围的菜单有所不同。 </p>"
+	}
+	},
+	{
+	"module":"clsdir",
+	"soncode_link":"//biz.cli.im/site/m/VW3549",
+	"item":{
+	"title":"分类",
+	"content":"<p> <span>kfc肯德基</span> </p>"
+	},
+	"url":"http://biz.cli.im/site/k/3549"
+	}}
+	``` 
 
-         <public id="module_title">				
-         {`each $data as mheader`}                //这里的tree_list 为全局变量.
+	* 方法:
+	
+	```
+	<public id="module_title">				
+       {`each tree_list as module`}
          <div class="module_header">
-            <h2>{`mheader.title`}</h2>
-            <div>{`mheader.desc`}</div>
-         </div>
-         {`/each`}
-         </public>
-       
-  调用方法: ```{`include 'module_title'`}``` 当调用public标签模板时,必须添加***public-***
-         
-3. 变量输出
-``
-{`name`}
-``
-
-4. 引入子模板
-	{`include 'module_title' $data`}		$data 为传递的数据, 为空不传数据. 当调用public标签模板时,必须添加***public-***
-	
-5. 输出html编码
-	{`#html_content`}							变量名前加 ***#*** 号.
-	
-6. 条件语法
-
-	 ```
-     {`if $data.item.content`}
-         <div class="list_des">{`#$data.item.content`}</div>
-     {`/if`}
+          <h2>module: {`module.module`}</h2>
+            <div>title:{`module.item.title`}</div>
+          <div>content:{`#module.item.content`}</div>
+       </div>
+       {`/each`}
+     </public>
      ```
      
+         
+	*  结果:
+
+	 ```	
+	 <div class="module_header">
+          <h2>module: rich_text</h2>
+          <div>title:网上含APP订餐满就送</div>
+          <div>content:<p> 肯德基宅急送实行专属菜单及价格。为保证食物品质，肯德基宅急送有送餐范围和服务时间限制。不同城市、不同送餐范围的菜单有所不同。 </p></div>
+         </div>
+         <div class="module_header">
+         <h2>module: clsdir</h2>
+         <div>title:分类</div>
+         <div>content:<p> <span>kfc肯德基</span> </p></div>
+     </div>
+     ```
+
+
+         
+4. 引入文件模块模板
+
+	```
+    {`include 'module-rich_text' data `}
+	```
+
+	data 为传递的数据, 为空不传数据. 
+	
+	
+5. 输出html编码
+
+	* 数据:
+
+	```
+	{'html_content':'<i>HTML标签斜体</i>'}
+	```
+	
+	* 方法:	(变量名前加 **#** 号.)
+
+	```
+	{`#html_content`}							
+	```
+	
+	* 结果:
+	
+	
+	<i>HTML标签斜体</i>
+	
+	
+6. 条件语法
+	
+	* 数据:
+	
+	```
+	{'data':[{'item':{'content':"商用码图文内容"}]}
+	```
+	* 方法1:
+	
+	```
+    {`if $data.item.content`}
+        <div class="list_des">{`#$data.item.content`}</div>
+    {`/if`}
+    ```
+    
+    * 方法2:
+    
      ```
      {`if $data.item.play_type == 'youku'`}
-          <a href="#" class="test" data-uid="{`$data.item.play_vid`}" data-use-youku="ture" data-width="100%" data-height="100%"></a>
+          <a>youku</a>
+     {`else`}
+          <a>alpha</a>
      {`/if`}
      ```
+
+
 
 ## [模板目录](id:模板目录)
 
@@ -78,9 +177,9 @@
 *	module-afatra.html							访问模块代码
 *	reso-javascript.js							脚本代码都写这里自动调用
 *	reso-style.css								样式代码都写这里自动调用
-*	/skin										存放配色方案样式文件
-*	/skin/red.css								配色样式文件 文件命名跟配置文件 config.json 中的 skin参数值 键名作为
-*	/skin/yellow.css								
+*	/skin/										存放配色方案样式文件
+	* /red.css								配色样式文件 文件命名跟配置文件 config.json 中的 skin参数值 键名作为
+	* /yellow.css								
 
 
 
@@ -90,7 +189,10 @@
 
 ## [配置文件](id:配置文件)
 
-```javascript
+ json数据格式的配置文件.
+
+
+```
 {
 	"version" : "1.0.4"							//模板版本, 每次更新样式,脚本和图片需要更新版本号来刷新资源.
 	"name" : "九宫格",							//模板中文名用于显示和辨识用.
@@ -113,7 +215,7 @@
 	"plugin" : [									//第三方扩展脚本
 		"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/jquery-1.8.3.min176ed4.js",//资源用绝对路径
 		"http://cache.clewm.net/p/video.js",
-		"http://biz.cli.me/Public/js/jquery.touchSwipe.min.js"
+		"http://biz.cli.im/Public/js/jquery.touchSwipe.min.js"
 	]
 }
 ```
@@ -121,7 +223,7 @@
 
 ## [商用码数据](id:商用码数据)
 
-```javascript
+```
 {
 "coding":"IS1868",								                         商用码ID
 "qrcode_img":"http://img.clewm.net/qrcode/2013/11/20/528ca467d3444.png", 二维码图片
