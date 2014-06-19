@@ -535,7 +535,7 @@
                     <div class="list_des video_tips">{$vo.block.play_state_desc}</div>
                 </div>
              {`/if`}
-          <a href="#" class="test" data-uid="{`$data.item.play_vid`}" data-width="100%" data-height="100%">
+          <a href="#" class="video_moudle" data-uid="{`$data.item.play_vid`}" data-width="100%" data-height="100%"> //这段原样调用即可,除了data-uid属性根据实际数据填写.其它属性不作修改.
               <div class="video_view" >
                  <img src="{`$data.item.play_image`}" />  视频预览图片
                  <div class="video_play_btn"></div>       视频带解析标签.使用时不做修改
@@ -543,7 +543,8 @@
           </a>
           {`/if`}
           {`if $data.item.play_type == 'youku'`}          优酷视频解析标签
-          <a href="#" class="test" data-uid="{`$data.item.play_vid`}" data-use-youku="ture" data-width="100%" data-height="100%"></a>
+          <a href="#" class="video_moudle" data-uid="{`$data.item.play_vid`}" data-use-youku="ture" data-width="100%" data-height="100%"></a>           //这段原样调用即可,除了data-uid属性根据实际数据填写.其它属性不作修改.
+
           {`/if`}
           
 
@@ -551,4 +552,4 @@
 ## [默认脚本说明](id:默认脚本说明)
 
 默认支持jQuery.
-main.html 只能写脚本时间,无法执行脚本.
+main.html 只能写脚本事件,无法执行脚本.
