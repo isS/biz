@@ -526,7 +526,7 @@
 
 ## [模块解析代码](id:模块解析代码)
 1. [视频模块](id:视频模块)
-***JS扩展配置种加载视频解析脚本*** [http://biz.cli.im/Public/mobile/js/adaptVideoPlay.js](http://biz.cli.im/Public/mobile/js/adaptVideoPlay.js)
+***JS扩展配置种加载视频解析脚本*** [http://biz.cli.im/Public/js/adaptVideoPlay.js](http://biz.cli.im/Public/js/adaptVideoPlay.js)
 
           {`include 'module_title' $data`}			引用模板头文件
           {`if $data.item.play_type == 'asdtv'`}   判断视频类型,play_type:asdtv youku 
