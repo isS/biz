@@ -194,6 +194,42 @@
 
 ```
 {
+	"version" : "1.0.1",  //模板版本, 每次更新样式,脚本和图片需要更新版本号来刷新资源.
+	"name" : "线型",  //模板中文名用于显示和辨识用
+	"descr" : "该模板支持所有模块",  //模板描述,用于选择模板时用.
+	"code" : "flow",  //模板目录命名,唯一标识请尽量定义成跟模板名有联系.
+	"module" : "rich_text,clsdir,file,audio,video,intera,links,contact,vcard,sms,fav,afatra,weixin",  //模板所支持的模块,配置目录必须要有对应模块解析代码
+	"skin" : {  //配色文件名, 唯一标识
+		"yellow" : {
+			"name":"黄色",  //配色名用于模板选择显示,描述于实际颜色接近.
+			"color":"#FF0",  //配色显示值用, 16位色或RGB均可.
+			"thumb":"images/thumb/yellow.jpg"  //模板配色预览图
+		},
+		"green" : {
+			"name":"绿色",
+			"color":"#F00",
+			"thumb":"images/thumb/green.jpg"
+		},
+		"red" : {
+			"name":"红色",
+			"color":"#00F",
+			"thumb":"images/thumb/red.jpg"
+		}
+	},
+	"plugin" : [  //第三方扩展脚本,资源用绝对路径
+		"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/jquery-1.8.3.min176ed4.js",
+		"http://biz.cli.im/Public/js/adaptVideoPlay.js",
+		"http://biz.cli.im/Public/js/jquery.touchSwipe.min.js"
+	]
+}
+
+```
+
+
+## [商用码数据](id:商用码数据)
+
+```
+{
     "coding":"IS1868",  /*商用码ID*/
     "qrcode_img":"http://o-clibiz-img.b0.upaiyun.com/qrcode/2013/11/20/528ca467d3444.png",  /*二维码图片*/
     "name":"格力—掌握核心科技",  /*商用码名称*/
@@ -463,3 +499,4 @@
 
 默认支持jQuery.
 main.html 只能写脚本事件,无法执行脚本.
+
