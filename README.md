@@ -242,7 +242,7 @@
         "phone":[  /*模板目录联系信息*/
         {
             "name":"咨询电话",  /*标题*/
-            "type":"tel",  /*类型(tel:固话,email:邮箱,mobile:手机,qq:QQ,sina:新浪微博,web:网址,)*/
+            "type":"tel",  /*类型(tel:固话,email:邮箱,mobile:手机,qq:QQ,sinaweibo:新浪微博,tweibo:腾讯微博;web:网址,)*/
             "link":"tel:0756-8614883",  /*链接值,href=""中的值使用*/
             "number":"0756-8614883"  /*内容,根据需求和标题一起输出.*/
         },
@@ -268,8 +268,8 @@
                 "value":"http://123412341234.qq.com"
             },
             {
-                "name":"微博",
-                "type":"sina",
+                "name":"新浪微博",
+                "type":"sinaweibo",
                 "link":"http://weibo.com/gree1991",
                 "value":"http://weibo.com/gree1991"
             },
@@ -286,8 +286,8 @@
                 "value":"http://点点滴滴"
             },
             {
-                "name":"微博",
-                "type":"web",
+                "name":"腾讯微博",
+                "type":"tweibo",
                 "link":"http://t.qq.com/gree",
                 "value":"http://t.qq.com/gree"
             }
