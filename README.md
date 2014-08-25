@@ -509,6 +509,10 @@ main.html 只能写脚本事件,无法执行脚本.
 2014-08-22 数据中返回代理商版权信息, agent_info 里面的 coypright. 
 
 ## [子码&分类页面开发](id:子码&分类页面开发）
+
+线上的子码分类访问地址：http://biz.cli.me/site/m/FJ3548 http://biz.cli.me/site/m/VW3549
+2.0模板的子码分类访问地址：http://biz.cli.me/test/m/FJ3548 http://biz.cli.me/test/m/VW3549 开发测试用，等模板写完切换到此路径
+
 子码或分类页面返回的数据如下:
 ```
 {
