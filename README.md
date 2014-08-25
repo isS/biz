@@ -9,6 +9,7 @@
 	*	[视频模块](#视频模块)
 *	[默认脚本说明](#默认脚本说明)
 *	[补充说明](#补充说明)
+*	[子码&分类页面开发](#子码&分类页面开发)
 
 ##	[开发语言](id:开发语言)
 
@@ -506,3 +507,121 @@ main.html 只能写脚本事件,无法执行脚本.
 
 ## [补充说明](id:补充说明)
 2014-08-22 数据中返回代理商版权信息, agent_info 里面的 coypright. 
+
+## [子码&分类页面开发](id:子码&分类页面开发）
+子码或分类页面返回的数据如下:
+```
+{
+    "qrcode_img":"http://o-clibiz-img.b0.upaiyun.com/qrcode/2014/01/24/52e22b9818ea6.png",	//子码&分类的图片
+        "is_valid":true,									//是否开通
+        "name":"分类",										//子码&分类的名称（标题）
+        "main":{										//主码信息
+            "title":"格力—掌握核心科技啊啊啊",							//主码标题
+            "url":"http://biz.cli.me/site/IS1868"						//主码链接
+        },
+        "tongji":{},										//统计代码(不作处理)
+        "tree_list":[										//子码&分类的模块数据，内部结构同主码的模块对应数据结构一样。
+        {
+            "coding":"VW3549",
+            "module":"clsdir",
+            "unfold":1,
+            "item":{
+                "title":"分类",
+                "content":"<p> <span>kfc肯德基<span></p>",
+                "imgPath":"http://o-clibiz-img.b0.upaiyun.com/richTextCover/2013/12/22/52b704304fd9b.jpg",
+                "imgPath_view_link":"/unit/img?img=http://o-clibiz-img.b0.upaiyun.com/richTextCover/2013/12/22/52b704304fd9b.jpg"
+            }
+        }
+    ],
+        "parent":{										//分类父级内容
+        },
+        "son_list":[										//分类下模块内容，结构数据同主码模块数据
+        {
+            "coding":"HL6903",
+            "module_icon":null,
+            "module":"links",
+            "unfold":"1",
+            "index":1,
+            "soncode_link":"/site/m/HL6903",
+            "item":{
+                "title":"开荒集开荒",
+                "descr":"开荒集开荒",
+                "link":[
+                {
+                    "name":"开荒集开荒",
+                    "link":"http://baidu.com"
+                }
+                ],
+                    "is_weixin":"1"
+            }
+        },
+        {
+            "coding":"DX6904",
+            "module_icon":null,
+            "module":"rich_text",
+            "unfold":"1",
+            "index":2,
+            "soncode_link":"/site/m/DX6904",
+            "item":{
+                "title":"午间特惠套餐",
+                "content":"<div class="rich_text">asdf</div>",
+                "imgPath":"",
+                "imgPath_view_link":"/unit/img?img="
+            }
+        },
+        {
+            "coding":"AP8001",
+            "module_icon":null,
+            "module":"rich_text",
+            "unfold":"1",
+            "index":3,
+            "soncode_link":"/site/m/AP8001",
+            "item":{
+                "title":"各种组合早餐",
+                "content":"<div class="rich_text"></div>",
+                "imgPath":"",
+                "imgPath_view_link":"/unit/img?img="
+            }
+        },
+        {
+            "coding":"NW16248",
+            "module_icon":null,
+            "module":"file",
+            "unfold":"1",
+            "index":4,
+            "soncode_link":"/site/m/NW16248",
+            "item":{
+                "title":"文件下载",
+                "list":[
+                {
+                    "name":"1306572732.png",
+                    "describe":"",
+                    "filepath":"http://o-clibiz-img.b0.upaiyun.com/file/2014/02/24/530ab6df91d5c.png"
+                }
+                ]
+            }
+        },
+        {
+            "coding":"EJ16249",
+            "module_icon":null,
+            "module":"contact",
+            "unfold":"1",
+            "index":5,
+            "soncode_link":"/site/m/EJ16249",
+            "item":{
+                "title":"12341234",
+                "descr":"12341234",
+                "phone":[
+                {
+                    "name":"1234",
+                    "type":"tel",
+                    "number":"123412341234",
+                    "link":"tel:123412341234"
+                }
+                ]
+            }
+        }
+    ]
+}
+```
+
